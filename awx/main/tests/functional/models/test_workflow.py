@@ -101,8 +101,6 @@ class TestWorkflowDAGFunctional(TransactionTestCase):
 
 @pytest.mark.django_db
 class TestWorkflowDNR():
-    'success', 'new'
-
     @pytest.fixture
     def workflow_job_fn(self):
         def fn(states=['new', 'new', 'new', 'new', 'new', 'new']):
