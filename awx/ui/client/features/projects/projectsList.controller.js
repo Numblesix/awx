@@ -65,11 +65,7 @@ function projectsListController (
         }
     });
 
-    if ($scope.removeGoTojobResults) {
-        $scope.removeGoTojobResults();
-    }
-
-    $scope.removeGoTojobResults = $scope.$on('GoTojobResults', (e, data) => {
+    $scope.$on('GoTojobResults', (e, data) => {
         if (data.summary_fields.current_update || data.summary_fields.last_update) {
             Wait('start');
             // Grab the id from summary_fields
@@ -82,11 +78,7 @@ function projectsListController (
         }
     });
 
-    if ($scope.removeCancelUpdate) {
-        $scope.removeCancelUpdate();
-    }
-
-    $scope.removeCancelUpdate = $scope.$on('Cancel_Update', (e, url) => {
+    $scope.$on('Cancel_Update', (e, url) => {
         // Cancel the project update process
         Rest.setUrl(url);
         Rest.post()
@@ -96,11 +88,7 @@ function projectsListController (
             .catch(createErrorHandler(url, 'POST'));
     });
 
-    if ($scope.removeCheckCancel) {
-        $scope.removeCheckCancel();
-    }
-
-    $scope.removeCheckCancel = $scope.$on('Check_Cancel', (e, projectData) => {
+    $scope.$on('Check_Cancel', (e, projectData) => {
         // Check that we 'can' cancel the update
         const url = projectData.related.cancel;
         Rest.setUrl(url);
